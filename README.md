@@ -13,10 +13,3 @@ It it just a summary of my most important options for a functional desktop exper
 2. copy the **config.sh** to **/mnt/root/root**
 3. change into the usb-stick `sudo arch-chroot /mnt/root` 
 4. execute `sh config.sh`
-
-
-## System
-  + Desktop Environment: LXQt
-  + Kernel: latest
-  + Browsers: Chromium, Firefox
-
