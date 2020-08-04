@@ -1,7 +1,7 @@
 #!/bin/bash
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 hwclock --systohc
-"Please enter name for computer: "
+echo "Please enter name for computer: "
 read pcname
 echo $pcname > /etc/hostname;
 echo "KEYMAP=de-latin1" > /etc/vconsole.conf
