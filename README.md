@@ -10,7 +10,9 @@ It it just a summary of my most important options for a functional desktop exper
 ## Usage
 1. execute the install-script
 `sh install.sh`
-2. 
+2. copy the **config.sh** to **/mnt/root/root**
+3. change into the usb-stick `sudo arch-chroot /mnt/root` 
+4. execute `sh config.sh`
 
 
 ## System
