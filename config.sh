@@ -28,3 +28,4 @@ systemctl enable sddm
 systemctl enable NetworkManager
 systemctl enable bluetooth
 pip3 install protonvpn-cli
+cp .zshrc "/home/$username/"
