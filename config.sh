@@ -21,7 +21,8 @@ passwd $username
 chmod +w /etc/sudoers
 echo "$username ALL=(ALL) ALL" > /etc/sudoers
 chmod -w /etc/sudoers
-usermod root -s /bin/fish
+usermod root -s /bin/zsh
+usermod $username -s /bin/fish
 grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable sddm
