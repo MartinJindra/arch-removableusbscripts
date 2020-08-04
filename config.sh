@@ -1,30 +1,30 @@
 #!/bin/bash
-sudo ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
-sudo hwclock --systohc
-echo "Please enter name for computer: "
+ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
+hwclock --systohc
+"Please enter name for computer: "
 read pcname
-sudo echo $pcname > /etc/hostname;
-sudo echo "KEYMAP=de-latin1" > /etc/vconsole.conf
-sudo echo "LANG=de_AT.UTF-8" > /etc/locale.conf
-sudo echo "127.0.0.1		localhost" >> /etc/hosts
-sudo echo "::1		localhost" >> /etc/hosts
-sudo echo "127.0.1.1		lxUSB.localdomain  lxUSB" >> /etc/hosts
-sudo echo "de_AT.UTF-8 UTF-8" >> /etc/locale.gen
-sudo echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-sudo locale-gen
+echo $pcname > /etc/hostname;
+echo "KEYMAP=de-latin1" > /etc/vconsole.conf
+echo "LANG=de_AT.UTF-8" > /etc/locale.conf
+echo "127.0.0.1		localhost" >> /etc/hosts
+echo "::1		localhost" >> /etc/hosts
+echo "127.0.1.1		lxUSB.localdomain  lxUSB" >> /etc/hosts
+echo "de_AT.UTF-8 UTF-8" >> /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
 echo "Password for root:"
-sudo passwd
+passwd
 echo "New User:"
 read username
-sudo useradd $username -m -G users -s /bin/fish
-sudo passwd $username
-sudo chmod +w /etc/sudoers
-sudo echo "$username ALL=(ALL) ALL" > /etc/sudoers
-sudo chmod -w /etc/sudoers
-sudo usermod root -s /bin/fish
-sudo grub-install --target=x86_64-efi --efi-directory=/efi --removable
-sudo grub-mkconfig -o /boot/grub/grub.cfg
-sudo systemctl enable sddm
-sudo systemctl enable NetworkManager
-sudo systemctl enable bluetooth
-sudo pip3 install protonvpn-cli
+useradd $username -m -G users -s /bin/fish
+passwd $username
+chmod +w /etc/sudoers
+echo "$username ALL=(ALL) ALL" > /etc/sudoers
+chmod -w /etc/sudoers
+usermod root -s /bin/fish
+grub-install --target=x86_64-efi --efi-directory=/efi --removable
+grub-mkconfig -o /boot/grub/grub.cfg
+systemctl enable sddm
+systemctl enable NetworkManager
+systemctl enable bluetooth
+pip3 install protonvpn-cli
