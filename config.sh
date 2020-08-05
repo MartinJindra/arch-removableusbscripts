@@ -28,5 +28,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable sddm
 systemctl enable NetworkManager
 systemctl enable bluetooth
-pip3 install protonvpn-cli
+pip3 install protonvpn-cli instaloader
 cp .zshrc "/home/$username/"
