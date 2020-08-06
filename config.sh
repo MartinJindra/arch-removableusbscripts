@@ -19,7 +19,7 @@ read username
 useradd $username -m -G users -s /bin/fish
 passwd $username
 chmod +w /etc/sudoers
-echo "$username ALL=(ALL) ALL" > /etc/sudoers
+echo "$username ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
 usermod root -s /bin/zsh
 usermod $username -s /bin/fish
@@ -28,5 +28,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable sddm
 systemctl enable NetworkManager
 systemctl enable bluetooth
-pip3 install protonvpn-cli instaloader
+pip3 install instaloader
 cp .zshrc "/home/$username/"
