@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pacman -Sy --needed arch-install-scripts
+#sudo pacman -Sy --needed arch-install-scripts
 lsblk
 echo "Drive:"
 read drive
@@ -15,4 +15,5 @@ genfstab -U /mnt/root/ >> /mnt/root/etc/fstab
 vim /mnt/root/etc/fstab
 cp config.sh /mnt/root/root
 cp .zshrc /mnt/root/root
-
+echo $drive
+echo "$drive" > /mnt/root/root/drive
