@@ -1,5 +1,7 @@
 #!/bin/bash
-#sudo pacman -Sy --needed arch-install-scripts
+sudo umount -R /mnt/root
+sudo pacman -Sy --needed arch-install-scripts
+sync
 lsblk
 echo "Drive:"
 read drive
@@ -17,3 +19,4 @@ cp config.sh /mnt/root/root
 cp .zshrc /mnt/root/root
 echo $drive
 echo "$drive" > /mnt/root/root/drive
+
