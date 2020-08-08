@@ -23,8 +23,7 @@ chmod +w /etc/sudoers
 echo "$username ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
 usermod root -s /bin/zsh
-# grub-install --target=x86_64-efi --efi-directory=/efi --removable
-grub-install --target=i386-pc $drive --removable
+grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable sddm
 systemctl enable NetworkManager
