@@ -1,5 +1,4 @@
 #!/bin/bash
-drive=$(cat drive)
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 hwclock --systohc
 echo "Please enter name for computer: "

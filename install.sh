@@ -25,4 +25,3 @@ vim /mnt/root/etc/fstab
 # copy .zshrc and the config file to disk 
 cp config.sh /mnt/root/root
 cp .zshrc /mnt/root/root
-echo "$drive" > /mnt/root/root/drive
