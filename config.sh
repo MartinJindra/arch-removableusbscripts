@@ -17,7 +17,7 @@ echo "Password for root:"
 passwd
 echo "New User:"
 read username
-useradd $username -m -G users -s /bin/fish
+useradd $username -m -G users -s /bin/zsh
 passwd $username
 chmod +w /etc/sudoers
 echo "$username ALL=(ALL) ALL" >> /etc/sudoers
