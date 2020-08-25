@@ -24,7 +24,7 @@ passwd
 # set new user
 echo "New User:"
 read username
-useradd $username -m -G users -s /bin/zsh
+useradd $username -m -G users -s $(which zsh)
 passwd $username
 # set permission for new user for sudo
 chmod +w /etc/sudoers
