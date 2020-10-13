@@ -21,6 +21,7 @@ locale-gen
 # set password for root
 echo "Password for root:"
 passwd
+cp .bashrc /root/
 # set new user
 echo "New User:"
 read username
@@ -30,9 +31,10 @@ passwd $username
 chmod +w /etc/sudoers
 echo "$username ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
-# set default shell for user
+# copy shell scripts to home dir
 usermod root -s /bin/zsh
 cp .zshrc "/home/$username/"
+cp .bashrc "/home/$userame/"
 # install grub
 grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
