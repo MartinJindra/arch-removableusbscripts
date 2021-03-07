@@ -138,3 +138,7 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+# added support for kitty terminal
+source <(kitty + complete setup bash)
+
