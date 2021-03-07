@@ -16,7 +16,7 @@ mkdir -p /mnt/root
 mount "$drive"2 /mnt/root
 # install packages to disk
 release=$(head -n 1 /etc/os-release)
-packages=(linux-firmware base base-devel grub efibootmgr networkmanager exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnuplot wxmaxima konqueror xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau lxqt sddm kate ktorrent kcalc mpv kpatience ksysguard ksystemlog veracrypt git vim nano partitionmanager bashtop htop openssh openssl sqlmap nmap arp-scan youtube-dl zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions fish bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr dialog python-setuptools neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
+packages=(linux-firmware base base-devel grub efibootmgr networkmanager exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnuplot wxmaxima konqueror xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt sddm kate ktorrent kcalc mpv kpatience ksysguard ksystemlog veracrypt git vim nano partitionmanager bashtop htop openssh openssl sqlmap nmap arp-scan youtube-dl zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions fish bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr dialog python-setuptools neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
 if [[ $release == 'NAME="Arch Linux"' ]]; then
 	pacstrap -c /mnt/root linux linux-headers $packages
 elif [[ $release = 'NAME="Manjaro Linux"' ]]; then 
