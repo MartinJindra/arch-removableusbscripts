@@ -27,7 +27,6 @@ locale-gen
 # set password for root
 echo "Password for root:"
 passwd
-cp .bashrc /root/
 
 # set new user
 read -rp 'New User: ' username
