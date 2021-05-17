@@ -25,7 +25,7 @@ then
 	
 	# install packages to disk
 	release=$(head -n 1 /etc/os-release)
-	packages=(linux-firmware base base-devel grub efibootmgr networkmanager exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnuplot wxmaxima luakit qutebrowser xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt sddm kate ktorrent kcalc mpv kpatience veracrypt git vim nano partitionmanager bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
+	packages=(linux-firmware base base-devel grub efibootmgr networkmanager exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnuplot wxmaxima qutebrowser xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt sddm kate ktorrent kcalc mpv kpat veracrypt git neovim nano partitionmanager bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
 	if [[ "$release" == 'NAME="Arch Linux"' ]]; 
 	then
 		pacstrap -c "$mountpoint" linux linux-headers "${packages[@]}"
