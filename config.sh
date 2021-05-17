@@ -6,7 +6,7 @@ hwclock --systohc
 
 # set system name
 read -rp 'Please enter name for computer: ' pcname
-echo $pcname > /etc/hostname;
+echo "$pcname" > /etc/hostname;
 
 # set keyboard layout
 echo "KEYMAP=de-latin1" > /etc/vconsole.conf
@@ -26,22 +26,22 @@ locale-gen
 
 # set password for root
 echo "Password for root:"
-passwd
+passwd root
 
 # set new user
-read -rp 'New User: ' username
-useradd $username -m -G users -s $(which zsh)
-passwd $username
+read -rp 'New User: ' uname
+useradd "$uname" -m -G users -s "$(which zsh)"
+passwd "$uname"
 
 # set permission for new user for sudo
 chmod +w /etc/sudoers
-echo "$username ALL=(ALL) ALL" >> /etc/sudoers
+echo "$uname ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
 
 # copy shell scripts to home dir
 usermod root -s /bin/zsh
-cp .zshrc "/home/$username/"
-cp .bashrc "/home/$userame/"
+cp .zshrc "/home/$uname/"
+cp .bashrc "/home/$uname/"
 
 # install grub
 grub-install --target=x86_64-efi --efi-directory=/efi --removable
