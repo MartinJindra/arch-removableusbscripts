@@ -25,7 +25,7 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # add light gtk greeter to lightdm config
-sed -i '/^\[Seat:\*\]/a greeter-session=lightdm-gtk-greeter' /etc/lightdm/lightdm.conf
+#sed -i '/^\[Seat:\*\]/a greeter-session=lightdm-gtk-greeter' /etc/lightdm/lightdm.conf
 
 # set password for root
 echo "Password for root:"
@@ -51,7 +51,7 @@ grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # enable display manager, networkmanager and bluetooth
-systemctl enable lightdm
+systemctl enable sddm
 systemctl enable NetworkManager
 systemctl enable bluetooth
 
