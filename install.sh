@@ -6,7 +6,7 @@ mountpoint="/mnt/root"
 umount -R $mountpoint 
 
 # install install-scripts
-pacman -Sy --needed --noconfirm arch-install-scripts
+pacman -Sy --needed --noconfirm arch-install-scripts dosfstools
 
 # choose disk and format it
 sync
