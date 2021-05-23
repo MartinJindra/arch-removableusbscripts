@@ -25,8 +25,7 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 
 # add light gtk greeter to lightdm config
-lightdm_file=$(sed '/\[LightDM\]/a greeter-session=lightdm-gtk-greeter' /etc/lightdm/lightdm.conf)
-echo $lightdm_file > /etc/lightdm/lightdm.conf
+sed -i '/^\[Seat:\*\]/a greeter-session=lightdm-gtk-greeter' /etc/lightdm/lightdm.conf
 
 # set password for root
 echo "Password for root:"
