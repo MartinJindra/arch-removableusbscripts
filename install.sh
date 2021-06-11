@@ -25,13 +25,16 @@ then
 	
 	# install packages to disk
 	release=$(head -n 1 /etc/os-release)
-	packages=(linux-firmware base base-devel grub efibootmgr networkmanager exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnuplot wxmaxima qutebrowser xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt sddm leafpad transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
-	if [[ "$release" == 'NAME="Arch Linux"' ]]; 
+	packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode grub-customizer gnuplot wxmaxima qutebrowser midori gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt leafpad transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli)
+    if [[ "$release" == 'NAME="Arch Linux"' ]]; 
 	then
-		pacstrap -c "$mountpoint" linux-lts linux-lts-headers linux-lts-docs "${packages[@]}"
-	elif [[ "$release" = 'NAME="Manjaro Linux"' ]]; 
+		pacstrap -c "$mountpoint" linux-lts linux-lts-headers linux-lts-docs networkmanager sddm "${packages[@]}"
+	elif [[ "$release" = 'NAME="Artix Linux"' ]]; 
 	then 
-		pacstrap -c "$mountpoint" linux510-lts linux510-headers linux510-docs "${packages[@]}"
+		pacstrap -c $mountpoint linux-lts linux-lts-headers linux-lts-docs openrc elogind-openrc networkmanager-openrc sddm-openrc "${packages[@]}"
+    elif [[ "$release" = 'NAME="Manjaro Linux"' ]]; 
+	then 
+		pacstrap -c "$mountpoint" linux510-lts linux510-headers linux510-docs networkmanager sddm "${packages[@]}"
 	fi
 
 	# mount boot partition to system
@@ -39,8 +42,9 @@ then
 	mount "$drive"1 "$mountpoint"/efi
 	
 	# generate fstab
-	genfstab -U "$mountpoint" >> "$mountpoint"/etc/fstab
-	$EDITOR "$mountpoint"/etc/fstab
+	chmod +w "$mountpoint"/etc/fstab
+    genfstab -U "$mountpoint" >> "$mountpoint"/etc/fstab
+	nvim "$mountpoint"/etc/fstab
 	
 	# copy .zshrc and the config file to disk 
 	cp config.sh "$mountpoint"/root

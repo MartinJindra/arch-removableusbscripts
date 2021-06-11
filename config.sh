@@ -51,7 +51,11 @@ grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # enable display manager, networkmanager and bluetooth
-systemctl enable sddm
-systemctl enable NetworkManager
-systemctl enable bluetooth
-
+if [ -x "$(command -v systemctl)" ];
+then
+    systemctl enable sddm
+    systemctl enable NetworkManager
+else 
+    rc-update add sddm
+    rc-update add NetworkManager
+fi
