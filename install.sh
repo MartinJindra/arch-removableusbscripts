@@ -31,7 +31,7 @@ then
 		pacstrap -c "$mountpoint" linux-lts linux-lts-headers linux-lts-docs networkmanager sddm "${packages[@]}"
 	elif [[ "$release" = 'NAME="Artix Linux"' ]]; 
 	then 
-		pacstrap -c $mountpoint linux-lts linux-lts-headers linux-lts-docs openrc elogind-openrc networkmanager-openrc sddm-openrc "${packages[@]}"
+		pacstrap -c $mountpoint linux-lts linux-lts-headers linux-lts-docs openrc elogind-openrc networkmanager-openrc sddm-openrc artix-archlinux-support "${packages[@]}"
     elif [[ "$release" = 'NAME="Manjaro Linux"' ]]; 
 	then 
 		pacstrap -c "$mountpoint" linux510-lts linux510-headers linux510-docs networkmanager sddm "${packages[@]}"
