@@ -55,7 +55,8 @@ if [ -x "$(command -v systemctl)" ];
 then
     systemctl enable sddm
     systemctl enable NetworkManager
-else 
+elif [ -x "$(command -v rc-update)" ]; 
+then 
     rc-update add sddm
     rc-update add NetworkManager
 fi
