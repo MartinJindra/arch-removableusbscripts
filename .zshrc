@@ -21,8 +21,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 alias cp="cp -i"
@@ -67,6 +67,11 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 alias ll='ls -alF'
+alias ls="ls --hyperlink=always --color=auto"
+alias icat="kitty +kitten icat"
+alias kdiff="kitty +kitten diff"
+alias remote_file="kitty +kitten remote_file"
+alias hints="kitty +kitten hints"
 
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
