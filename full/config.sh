@@ -36,27 +36,49 @@ read -rp 'New User: ' uname
 useradd "$uname" -m -G users -s "$(which zsh)"
 passwd "$uname"
 
+# add user to groups
+groupadd wireshark
+groupadd kismet
+usermod "$uname" -aG wheel
+usermod "$uname" -aG libvirt
+usermod "$uname" -aG wireshark
+usermod "$uname" -aG kismet
+
 # set permission for new user for sudo
 chmod +w /etc/sudoers
 echo "$uname ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
 
 # copy shell scripts to home dir
+# user
 usermod root -s /bin/zsh
-cp .zshrc "/home/$uname/"
-cp .bashrc "/home/$uname/"
+cp -r .oh-my-zsh "/home/$uname/.oh-my-zsh"
+wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/zsh/old_zshconfig -O "/home/$uname/.zshrc"
+wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/bash/bash_config -O "/home/$uname/.bashrc"
+mkdir -p "/home/$uname/.config"
+wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/starship/starship.toml -O "/home/$uname/.config/starship.toml"
+
+# make user own the config files
+chown -R "$uname:$uname" "/home/$uname/.oh-my-zsh"  
+chown -R "$uname:$uname" "/home/$uname/.config"
+chown "$uname:$uname" "/home/$uname/.zshrc"
+chown "$uname:$uname" "/home/$uname/.bashrc"
 
 # install grub
 grub-install --target=x86_64-efi --efi-directory=/efi --removable
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# enable display manager, networkmanager and bluetooth
+# enable display manager, networkmanager
 if [ -x "$(command -v systemctl)" ];
 then
     systemctl enable sddm
     systemctl enable NetworkManager
+    systemctl enable libvirtd
+    systemctl enable sshd
 elif [ -x "$(command -v rc-update)" ]; 
 then 
     rc-update add sddm
     rc-update add NetworkManager
+    rc-update add libvirtd 
+    rc-update add sshd
 fi

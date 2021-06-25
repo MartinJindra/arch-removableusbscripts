@@ -38,6 +38,12 @@ read -rp 'New User: ' uname
 useradd "$uname" -m -G users -s "$(which zsh)"
 passwd "$uname"
 
+# add user to groups
+usermod "$uname" -aG sudo
+usermod "$uname" -aG wheel
+usermod "$uname" -aG wireshark
+usermod "$uname" -aG kismet
+
 # set permission for new user for sudo
 chmod +w /etc/sudoers
 echo "$uname ALL=(ALL) ALL" >> /etc/sudoers
@@ -57,8 +63,10 @@ if [ -x "$(command -v systemctl)" ];
 then
     systemctl enable sddm
     systemctl enable NetworkManager
+    systemctl enable sshd
 elif [ -x "$(command -v rc-update)" ]; 
 then 
     rc-update add sddm
     rc-update add NetworkManager
+    rc-update add sshd
 fi
