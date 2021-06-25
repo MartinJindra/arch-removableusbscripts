@@ -1,6 +1,6 @@
 ## Installations methods
 
-There are two installations the `full` and `lightweight` version.
+There are two installations the `full` and `light` version.
 As the names ascribe, the `full` version is a fully featured KDE Plasma desktop and the `light` version uses an LXQt desktop with minimal tools.
 
 ### full

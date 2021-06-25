@@ -15,9 +15,11 @@ echo "KEYMAP=de-latin1" > /etc/vconsole.conf
 echo "LANG=de_AT.UTF-8" > /etc/locale.conf
 
 # set network configuration
-echo "127.0.0.1		localhost" >> /etc/hosts
-echo "::1		localhost" >> /etc/hosts
-echo "127.0.1.1		$pcname.localdomain  $pcname" >> /etc/hosts
+{
+    echo "127.0.0.1     localhost"
+    echo "::1       localhost"
+    echo "127.0.1.1     $pcname.localdomain  $pcname"
+} >> /etc/hosts
 
 # generate locale 
 echo "de_AT.UTF-8 UTF-8" >> /etc/locale.gen
