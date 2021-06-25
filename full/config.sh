@@ -75,10 +75,12 @@ then
     systemctl enable NetworkManager
     systemctl enable libvirtd
     systemctl enable sshd
+    systemctl enable tlp
 elif [ -x "$(command -v rc-update)" ]; 
 then 
     rc-update add sddm
     rc-update add NetworkManager
     rc-update add libvirtd 
     rc-update add sshd
+    rc-update add tlp
 fi

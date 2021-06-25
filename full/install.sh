@@ -30,13 +30,13 @@ else
 	
 	    # install packages to disk
 	    release=$(head -n 1 /etc/os-release)
-	    packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode grub-customizer meld gnome-disk-utility gnuplot wxmaxima networkmanager qutebrowser chromium firefox falkon vivaldi vivaldi-ffmpeg-codecs gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau virtualbox virtualbox-host-modules-arch libvirt qemu qemu-arch-extra virt-manager kitty plasma kde-applications transmission-cli transmission-gtk mpv kpat veracrypt git neovim nano bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl starship fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector)
+	    packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode tlp grub-customizer meld gnome-disk-utility gnuplot wxmaxima networkmanager qutebrowser chromium firefox falkon vivaldi vivaldi-ffmpeg-codecs gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau virtualbox virtualbox-host-modules-arch libvirt qemu qemu-arch-extra virt-manager kitty plasma kde-applications transmission-cli transmission-gtk mpv kpat veracrypt git neovim nano bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl starship fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector)
         if [[ "$release" == 'NAME="Arch Linux"' ]]; 
 	    then
 		    pacstrap -c "$mountpoint" linux linux-headers linux-docs sddm vagrant "${packages[@]}"
 	    elif [[ "$release" = 'NAME="Artix Linux"' ]]; 
 	    then 
-		    pacstrap -c $mountpoint linux linux-headers linux-docs openrc elogind-openrc networkmanager-openrc sddm-openrc libvirt-openrc artix-archlinux-support "${packages[@]}"
+		    pacstrap -c $mountpoint linux linux-headers linux-docs openrc elogind-openrc networkmanager-openrc sddm-openrc libvirt-openrc tlp-openrc artix-archlinux-support "${packages[@]}"
         elif [[ "$release" = 'NAME="Manjaro Linux"' ]]; 
 	    then 
 		    pacstrap -c "$mountpoint" linux512 linux512-headers linux512-docs sddm vagrant "${packages[@]}"
