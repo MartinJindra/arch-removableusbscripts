@@ -30,7 +30,7 @@ else
 	
 	    # install packages to disk
 	    release=$(head -n 1 /etc/os-release)
-	    packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode grub-customizer meld gnome-disk-utility gnuplot wxmaxima qutebrowser midori gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt lxde-icon-theme leafpad tlp transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted bpytop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector network-manager-applet)
+	    packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnome-disk-utility gnuplot wxmaxima midori gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt lxde-icon-theme leafpad tlp transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted btop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector network-manager-applet)
         if [[ "$release" == 'NAME="Arch Linux"' ]]; 
 	    then
 		    pacstrap -c "$mountpoint" linux linux-headers linux-docs networkmanager sddm "${packages[@]}"
