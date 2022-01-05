@@ -33,16 +33,16 @@ else
 
         # install packages to disk
         release=$(head -n 1 /etc/os-release)
-        packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnome-disk-utility gnuplot wxmaxima midori gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty lxqt lxde-icon-theme leafpad tlp transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted btop htop openssh openssl sqlmap nmap arp-scan youtube-dl fish zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector network-manager-applet)
+        packages=(linux-firmware base base-devel grub efibootmgr exfat-utils mtools ntfs-3g amd-ucode intel-ucode gnome-disk-utility gnuplot wxmaxima midori gst-plugins-good gst-libav xf86-video-vesa xf86-video-ati xf86-video-intel xf86-video-amdgpu xf86-video-nouveau kitty yadm lxqt lxde-icon-theme leafpad tlp transmission-cli transmission-gtk galculator mpv kpat veracrypt git neovim nano gparted btop htop openssh openssl nmap arp-scan yt-dlp bash-completion python-pip python bluez fatresize jfsutils lsof wget arandr neofetch arch-install-scripts tar xz bzip2 gzip zstd speedtest-cli reflector network-manager-applet)
         if [[ "$release" == 'NAME="Arch Linux"' ]];
         then
-            pacstrap -c "$mountpoint" linux linux-headers linux-docs networkmanager sddm "${packages[@]}"
+            pacstrap -c "$mountpoint" linux-lts linux-lts-headers linux-lts-docs networkmanager sddm "${packages[@]}"
         elif [[ "$release" = 'NAME="Artix Linux"' ]];
         then
-            pacstrap -c $mountpoint linux linux-headers linux-docs openrc elogind-openrc networkmanager-openrc sddm-openrc tlp-openrc artix-archlinux-support "${packages[@]}"
+            pacstrap -c $mountpoint linux-lts linux-lts-headers linux-lts-docs openrc elogind-openrc networkmanager-openrc sddm-openrc tlp-openrc artix-archlinux-support "${packages[@]}"
         elif [[ "$release" = 'NAME="Manjaro Linux"' ]];
         then
-            pacstrap -c "$mountpoint" linux512 linux512-headers linux512-docs networkmanager sddm "${packages[@]}"
+            pacstrap -c "$mountpoint" linux515 linux515-headers linux515-docs networkmanager sddm "${packages[@]}"
         fi
 
         # mount boot partition to system
@@ -54,9 +54,9 @@ else
         genfstab -U "$mountpoint" >> "$mountpoint"/etc/fstab
         nvim "$mountpoint"/etc/fstab
 
-        # copy .zshrc and the config file to disk
+        # set dotfiles
+        yadm clone https://git.derchef.site/derchef/dotfiles
+        yadm submodule update --init
         cp config.sh "$mountpoint"/root
-        cp --force .zshrc "$mountpoint"/root
-        cp --force .bashrc "$mountpoint"/root
     fi
 fi

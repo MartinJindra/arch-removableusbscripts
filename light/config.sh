@@ -35,14 +35,11 @@ passwd root
 
 # set new user
 read -rp 'New User: ' uname
-useradd "$uname" -m -G users -s "$(which zsh)"
+useradd "$uname" -m -G users -s "$(which bash)"
 passwd "$uname"
-
-# add user to groups
-usermod "$uname" -aG sudo
-usermod "$uname" -aG wheel
-usermod "$uname" -aG wireshark
-usermod "$uname" -aG kismet
+usermod "$uname" -aG sudo,wheel
+yadm clone https://git.derchef.site/derchef/dotfiles
+yadm submodule update --init
 
 # set permission for new user for sudo
 chmod +w /etc/sudoers
@@ -50,9 +47,7 @@ echo "$uname ALL=(ALL) ALL" >> /etc/sudoers
 chmod -w /etc/sudoers
 
 # copy shell scripts to home dir
-usermod root -s /bin/zsh
-cp .zshrc "/home/$uname/"
-cp .bashrc "/home/$uname/"
+usermod root -s "$(which bash)"
 
 # install grub
 grub-install --target=x86_64-efi --efi-directory=/efi --removable
