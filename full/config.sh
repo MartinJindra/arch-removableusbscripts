@@ -35,6 +35,8 @@ passwd root
 read -rp 'New User: ' uname
 useradd "$uname" -m -G users -s "$(which zsh)"
 passwd "$uname"
+yadm clone https://git.derchef.site/derchef/dotfiles
+yadm submodule update --init
 
 # add user to groups
 groupadd wireshark
@@ -51,12 +53,7 @@ chmod -w /etc/sudoers
 
 # copy shell scripts to home dir
 # user
-usermod root -s /bin/zsh
-cp -r .oh-my-zsh "/home/$uname/.oh-my-zsh"
-wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/zsh/old_zshconfig -O "/home/$uname/.zshrc"
-wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/bash/bash_config -O "/home/$uname/.bashrc"
-mkdir -p "/home/$uname/.config"
-wget -q https://git.derchef.site/derchef/dotfiles/raw/branch/main/starship/starship.toml -O "/home/$uname/.config/starship.toml"
+usermod root -s /bin/bash
 
 # make user own the config files
 chown -R "$uname:$uname" "/home/$uname/.oh-my-zsh"  
