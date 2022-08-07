@@ -42,7 +42,7 @@ else
             pacstrap -c $mountpoint linux linux-headers linux-docs openrc elogind-openrc networkmanager-openrc sddm-openrc libvirt-openrc tlp-openrc artix-archlinux-support "${packages[@]}"
         elif [[ "$release" = 'NAME="Manjaro Linux"' ]];
         then
-            pacstrap -c "$mountpoint" linux512 linux512-headers linux512-docs sddm vagrant "${packages[@]}"
+            pacstrap -c "$mountpoint" linux515 linux515-headers linux515-docs sddm vagrant "${packages[@]}"
         fi
 
         # mount boot partition to system
