@@ -38,7 +38,7 @@ read -rp 'New User: ' uname
 useradd "$uname" -m -G users -s "$(which bash)"
 passwd "$uname"
 usermod "$uname" -aG sudo,wheel
-yadm clone https://git.derchef.site/derchef/dotfiles
+yadm clone https://git.mjindra.eu/derchef/dotfiles
 yadm submodule update --init
 
 # set permission for new user for sudo

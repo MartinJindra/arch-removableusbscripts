@@ -55,7 +55,7 @@ else
         nvim "$mountpoint"/etc/fstab
 
         # set dotfiles
-        yadm clone https://git.derchef.site/derchef/dotfiles
+        yadm clone https://git.mjindra.eu/derchef/dotfiles
         yadm submodule update --init
         cp config.sh "$mountpoint"/root
     fi

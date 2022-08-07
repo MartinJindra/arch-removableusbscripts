@@ -35,7 +35,7 @@ passwd root
 read -rp 'New User: ' uname
 useradd "$uname" -m -G users -s "$(which zsh)"
 passwd "$uname"
-yadm clone https://git.derchef.site/derchef/dotfiles
+yadm clone https://git.mjindra.eu/derchef/dotfiles
 yadm submodule update --init
 
 # add user to groups
